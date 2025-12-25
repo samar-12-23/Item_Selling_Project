@@ -74,6 +74,42 @@ item_selling_project/
 
 3.Feature-based commits
 
+
+🧰 Tech Stack
+1.Backend & Framework
+
+  a.Python
+
+  b.Flask (Micro-framework for REST APIs)
+
+  c.Flask-SQLAlchemy (ORM)
+
+  d.Flask-JWT-Extended (Authentication & Authorization)
+
+2.Database & Storage
+
+  a.SQLite / MySQL
+
+  b.SQLAlchemy ORM
+
+  c.Alembic (optional for migrations)
+
+3.Authentication & Security
+
+  a.JWT (JSON Web Tokens)
+
+  b.Werkzeug for password hashing
+
+  c.Role-based access control
+
+4.Developer Tools
+
+  a.Git & GitHub (version control)
+
+  b.Postman / Thunder Client (API testing)
+
+  c.Virtual Environment (venv)
+
 🎯 **Future Enhancements**
 
 1.Item purchase & order management
