@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+{% block title %}
+Feature page
+{% endblock %}
+{% block content %}
+<div class="row" style="margin-top: 20px; margin-left: 20px;">
+   <div class="col-8">
+    <h2>Available Items on the Market</h2>
+    <p>CLick on one of the items to start buying </p>
+    <br>
+      <table>
+         <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Barcode</th>
+            <th>Price</th>
+            <th>Options</th>
+         </tr>
+         {% for item in items %}
+         {% include 'includes/items_models.html' %}
+
+         <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.barcode }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+               <button class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal-MoreInfo-{{ item.id }}">More info</button>
+               <button class="btn btn-outline btn-success"data-bs-toggle="modal" data-bs-target="#exampleModal-PurchaseConfirm-{{ item.id }}">Purchase Item</button>
+            </td>
+         </tr>
+         {% endfor %}
+      </table>
+   </div>
+   <div class="col-4">
+        <h2>Owned Items</h2>
+        <p>CLick on sell item to put an itme back on the Market</p>
+        <br>
+        <div class="row">
+            {% for owned_item in owned_items %}
+            {% include 'includes/owned_items.html' %}
+            <div class="col-md-6"> 
+                <div style="margin-bottom: 5px;" class="card text-center bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ owned_item.name }}</h5>
+                        <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px;" data-bs-toggle="modal" data-bs-target="#exampleModal-SellingConfirm-{{ owned_item.id }}">
+                            Sell Item 
+
+                        </button>
+                        <p class="card-text"><strong> This Item costs {{ owned_item.price }}$ </strong></p>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<style>
+   body{
+   background-color: #212121;
+   color: white;
+   }
+   table {
+   width: 80%;
+   margin: 60px auto;
+   border-collapse: collapse;
+   background: #ffffff;
+   border-radius: 14px;
+   overflow: hidden;
+   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+   animation: fadeIn 1s ease-in-out;
+   }
+   /* Table header */
+   th {
+   background: linear-gradient(135deg, #667eea, #764ba2);
+   color: white;
+   padding: 16px;
+   font-size: 15px;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   }
+   /* Table rows */
+   td {
+   padding: 14px;
+   text-align: center;
+   font-size: 14px;
+   color: #333;
+   }
+   /* Row hover effect */
+   tr {
+   transition: all 0.3s ease;
+   }
+   tr:hover {
+   background-color: #f5f6ff;
+   transform: scale(1.01);
+   }
+   /* Zebra stripes */
+   tr:nth-child(even) td {
+   background-color: #fafafa;
+   }
+   /* Price highlight */
+   td:last-child {
+   font-weight: bold;
+   color: #2f855a;
+   }
+   /* Animation */
+   @keyframes fadeIn {
+   from {
+   opacity: 0;
+   transform: translateY(30px);
+   }
+   to {
+   opacity: 1;
+   transform: translateY(0);
+   }
+   }
+</style>
+{% endblock %}
